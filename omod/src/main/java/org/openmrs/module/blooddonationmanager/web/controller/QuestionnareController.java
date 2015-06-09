@@ -43,6 +43,7 @@ public class QuestionnareController {
 
 	@RequestMapping(method=RequestMethod.POST)
 	public String processSubmit(ModelMap map, HttpSession httpSession,
+                                @RequestParam("healthy") String donorId,
 	                            @RequestParam("healthy") String healthy,
 								@RequestParam("personId") String personId,
 								@RequestParam("malaria") String malaria,
@@ -69,28 +70,46 @@ public class QuestionnareController {
 
 
         try{
-            Questionnaire questionnaire=new Questionnaire();
-            int personID = Integer.parseInt(personId);
-            //Saving the details
-
-            questionnaire.setAllergy(allergy);
-            questionnaire.setBloodTransfusion(bloodTransfusion);
-            questionnaire.setDonatedBlood(donatedBlood);
-            questionnaire.setHealthy(healthy);
-            questionnaire.setEarBodyPiercing(earBodyPercing);
-            questionnaire.setOnMedication(onMedication);
-            questionnaire.setPerson(person);
-            questionnaire.setOrganTransplant(organTransplant);
-            questionnaire.setPregnant(pregnant);
-            questionnaire.setQuestionnareDate(questionnareDate);
-            questionnaire.setTatoo(tatoo);
 
 
 
-            //save questionnare
-            questionnareService.saveQuestionnare(questionnaire);
-            httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Added Donor Questionnare Successfully");
+			SimpleDateFormat formatter = new SimpleDateFormat("dd/MMM/yyyy");
+			//String dateInString = "7-Jun-2013";
 
+			try {
+
+				Date date = formatter.parse(questionnareDate);
+
+
+				Questionnaire questionnaire = new Questionnaire();
+				int donorID = Integer.parseInt(donorId);
+				//Saving the details
+
+				questionnaire.setAllergy(allergy);
+                questionnaire.setDonorId(donorID);
+                questionnaire.setMalaria(malaria);
+				questionnaire.setBloodTransfusion(bloodTransfusion);
+				questionnaire.setDonatedBlood(donatedBlood);
+				questionnaire.setHealthy(healthy);
+				questionnaire.setEarBodyPiercing(earBodyPercing);
+				questionnaire.setOnMedication(onMedication);
+				questionnaire.setPerson(person);
+				questionnaire.setOrganTransplant(organTransplant);
+				questionnaire.setPregnant(pregnant);
+				questionnaire.setQuestionnareDate(date);
+				questionnaire.setTatoo(tatoo);
+                questionnaire.setOnAsprin(onAsprin);
+
+
+
+				//save questionnare
+				questionnareService.saveQuestionnare(questionnaire);
+				httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Added Donor Questionnare Successfully");
+
+			}
+			catch (ParseException e) {
+				e.printStackTrace();
+			}
         }
         catch (Exception ex)
         {

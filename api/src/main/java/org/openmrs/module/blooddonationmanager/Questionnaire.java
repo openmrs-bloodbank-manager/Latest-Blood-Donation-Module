@@ -22,35 +22,32 @@ import java.util.Date;
 /**
  * It is a model class. It should extend either {@link BaseOpenmrsObject} or {@link BaseOpenmrsMetadata}.
  */
-public class Questionnaire implements Serializable{
+public class Questionnaire implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 	private Integer questionnareId;
-	
+
 	private Person person;
-    private Integer donorId;
-	
+	private Integer donorId;
+
 	private String healthy;
 	private String malaria;
-    private String pregnant;
-    private String onMedication;
-    private String allergy;
-    private String onAsprin;
-    private String donatedBlood;
-    private String bloodTransfusion;
-    private String organTransplant;
-    private String needleStick;
-    private String syphilisGonorrhea;
-    private String earBodyPiercing;
-    private String tatoo;
+	private String pregnant;
+	private String onMedication;
+	private String allergy;
+	private String onAsprin;
+	private String donatedBlood;
+	private String bloodTransfusion;
+	private String organTransplant;
+	private String needleStick;
+	private String syphilisGonorrhea;
+	private String earBodyPiercing;
+	private String tatoo;
 	private Date questionnareDate;
 
 
-
-
-	
-    /**
+	/**
 	 * @return the questionnareId
 	 */
 	public Integer getQuestionnareId() {
@@ -58,7 +55,7 @@ public class Questionnaire implements Serializable{
 	}
 
 	/**
-	 * @param donorId  to set
+	 * @param donorId to set
 	 */
 	public void setDonorId(Integer donorId) {
 		this.donorId = donorId;
@@ -80,23 +77,21 @@ public class Questionnaire implements Serializable{
 	}*/
 
 
-
-
-    /**
+	/**
 	 * @param questionnareDate the storageDate to set
 	 */
-    public void setQuestionnareDate(Date questionnareDate) {
-    	this.questionnareDate = questionnareDate;
-    }
+	public void setQuestionnareDate(Date questionnareDate) {
+		this.questionnareDate = questionnareDate;
+	}
 
-    /**
-     * @return the expiryDate
-     */
-    public Date getQuestionnareDate() {
-    	return questionnareDate;
-    }
+	/**
+	 * @return the expiryDate
+	 */
+	public Date getQuestionnareDate() {
+		return questionnareDate;
+	}
 
-    /**
+	/**
 	 * @return the patient
 	 */
 	public Person getPerson() {
@@ -111,9 +106,8 @@ public class Questionnaire implements Serializable{
 	}
 
 
-
-	public String setOnAsprin() {
-		return onAsprin;
+	public String setOnAsprin(String onAsprin) {
+		return this.onAsprin;
 	}
 
 	/**
@@ -124,100 +118,99 @@ public class Questionnaire implements Serializable{
 	}
 
 
-	public String setMalaria(){
+	public String setMalaria() {
 		return malaria;
 	}
 
-	public void getMalaria(String malaria){
-		this.malaria=malaria;
+	public void getMalaria(String malaria) {
+		this.malaria = malaria;
 	}
 
 
-	public String setAllergy(String allergy){
+	public String setAllergy(String allergy) {
 		return this.allergy;
 	}
 
-	public void getAllergy(String allergy){
-		this.allergy=allergy;
+	public void getAllergy(String allergy) {
+		this.allergy = allergy;
 	}
 
-	public String setOnMedication(String onMedication){
+	public String setOnMedication(String onMedication) {
 		return this.onMedication;
 	}
 
-	public void getOnMedication(String tatoo){
-		this.onMedication=onMedication;
+	public void getOnMedication(String tatoo) {
+		this.onMedication = onMedication;
 	}
 
 
-
-	public String setOrganTransplant(String organTransplant){
+	public String setOrganTransplant(String organTransplant) {
 		return this.organTransplant;
 	}
 
-	public void getOrganTrasplant(String organTransplant){
-		this.organTransplant=organTransplant;
+	public void getOrganTrasplant(String organTransplant) {
+		this.organTransplant = organTransplant;
 	}
 
 
-
-	public String setDonatedBlood(String donatedBlood){
+	public String setDonatedBlood(String donatedBlood) {
 		return this.donatedBlood;
 	}
 
-	public void getDonatedBlood(String donatedBlood){
-		this.donatedBlood=donatedBlood;
+	public void getDonatedBlood(String donatedBlood) {
+		this.donatedBlood = donatedBlood;
 	}
 
 
-	public String setHealthy(String healthy){
+	public String setHealthy(String healthy) {
 		return this.healthy;
 	}
 
-	public void getHealthy(String healthy){
-		this.healthy=healthy;
+	public void getHealthy(String healthy) {
+		this.healthy = healthy;
 	}
 
 
-
-	public String setTatoo(String tatoo){
+	public String setTatoo(String tatoo) {
 		return this.tatoo;
 	}
 
-	public void getTatoo(String tatoo){
-		this.tatoo=tatoo;
+	public void getTatoo(String tatoo) {
+		this.tatoo = tatoo;
 	}
 
 
-
-
-	public String setEarBodyPiercing(String earBodyPercing){
+	public String setEarBodyPiercing(String earBodyPercing) {
 		return earBodyPiercing;
 	}
 
-	public void getEarBodyPiercing(String earBodyPiercing){
-		this.earBodyPiercing=earBodyPiercing;
+	public void getEarBodyPiercing(String earBodyPiercing) {
+		this.earBodyPiercing = earBodyPiercing;
 	}
 
 
-
-	public String setPregnant(String pregnant){
+	public String setPregnant(String pregnant) {
 		return this.pregnant;
 	}
 
-	public void getPregnant(String pregnant){
-		this.pregnant=pregnant;
+	public void getPregnant(String pregnant) {
+		this.pregnant = pregnant;
 	}
 
 
-
-	public String setBloodTransfusion(String bloodTransfusion){
+	public String setBloodTransfusion(String bloodTransfusion) {
 		return this.bloodTransfusion;
 	}
 
-	public void getBloodTransfusion(String bloodTransfusion){
-		this.bloodTransfusion=bloodTransfusion;
+	public void getBloodTransfusion(String bloodTransfusion) {
+		this.bloodTransfusion = bloodTransfusion;
 	}
 
 
+	public String setMalaria(String malaria) {
+	    return malaria;
+	}
+
 }
+
+
