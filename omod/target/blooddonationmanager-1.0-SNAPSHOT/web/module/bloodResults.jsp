@@ -27,36 +27,33 @@
 <body>
 
 <div class="table-responsive" style="width:80%; margin-left:10%; margin-right:10%;">
-    <h2 class="sub-header">Blood Donation Questionnaire</h2>
+
 
     <form>
-        <div class="form-group">
+        <h2 class="sub-header">Blood Results</h2>
+        <div class="form-group" style="width:60%; margin-left: 10%; margin-right: 10%;">
             <ul>
                 <li class="list-group-item list-group-item-warning">
-                <label for="donorId">Second Name</label>
-                <input type="text" class="form-control" id="donorId" placeholder="">
+                    <label for="donorId">Donor Identification Number</label>
+                    <input type="text" class="form-control" id="donorId" placeholder="Doe">
                 </li>
+
                 <li class="list-group-item list-group-item-warning">
-                <label for="firstName">First Name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="Jane"><br>
-                </li>
-                <li class="list-group-item list-group-item-warning">
-                <label for="lastName">Second Name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Doe">
+                <label for="donorName">Donor Name</label>
+                <input type="text" class="form-control" id="donorName" placeholder="Doe">
                 </li>
                 <li class="list-group-item list-group-item-warning">
                 <label for="bloodType">Blood Type</label>
-                <input type="text" class="form-control" id="bloodType" placeholder=""><br>
+                <input type="text" class="form-control" id="bloodType" placeholder="">
                 </li>
                 <li class="list-group-item list-group-item-warning">
                 <label for="rhesusFactor">Rhesus Factor</label>
-                <input type="text" class="form-control" id="rhesusFactor" placeholder="jane.doe@example.com"><br>
+                <input type="text" class="form-control" id="rhesusFactor" placeholder="jane.doe@example.com">
                 </li>
                 <li class="list-group-item list-group-item-warning">
                 <label for="serumTest">Serum Result</label>
                 <input type="text" class="form-control" id="serumTest" placeholder="">
                 </li>
-
             </ul>
         </div>
         <button type="submit" class="btn btn-primary">Add or Update</button>

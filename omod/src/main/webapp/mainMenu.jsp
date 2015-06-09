@@ -33,7 +33,7 @@
 
         <openmrs:hasPrivilege privilege="Edit Encounters">
             <li <c:if test='<%= request.getRequestURI().contains("bloodResults") %>'>class="active"</c:if>>
-                <a href="bloodResults.form">Donor Encounter</a>
+                <a href="bloodResults.form">Blood Results</a>
             </li>
         </openmrs:hasPrivilege>
 
