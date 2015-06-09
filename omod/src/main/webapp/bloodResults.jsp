@@ -30,7 +30,7 @@
     <h2 class="sub-header">Blood Donation Questionnaire</h2>
 
     <form>
-        <div class="form-group">
+        <div class="form-group" style="width:60%; margin-left: 10%; margin-right: 10%;">
             <ul>
                 <li class="list-group-item list-group-item-warning">
                 <label for="firstName">First Name</label>
