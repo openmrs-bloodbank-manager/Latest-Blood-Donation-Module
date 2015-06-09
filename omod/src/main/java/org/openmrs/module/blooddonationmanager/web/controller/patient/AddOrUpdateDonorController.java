@@ -1,13 +1,13 @@
 package org.openmrs.module.blooddonationmanager.web.controller.patient;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.*;
 import org.openmrs.api.PatientService;
+import org.openmrs.api.PersonService;
 import org.openmrs.api.context.Context;
-//import org.openmrs.module.blooddonationmanager.api.BloodDonationManagerService;
-//import org.openmrs.module.blooddonationmanager.api.model.PreparedDonorId;
+import org.openmrs.module.blooddonationmanager.Donor;
 import org.openmrs.module.blooddonationmanager.api.BloodDonationManagerService;
+import org.openmrs.module.blooddonationmanager.api.DonorService;
 import org.openmrs.module.blooddonationmanager.api.model.PreparedDonorId;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,15 +15,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+import org.openmrs.Location;
+import org.openmrs.Patient;
+import org.openmrs.PatientIdentifier;
+import org.openmrs.PatientIdentifierType;
+import org.openmrs.PersonAddress;
+import org.openmrs.PersonAttribute;
+import org.openmrs.PersonAttributeType;
+import org.openmrs.PersonName;
 
-//import org.openmrs.module.BloodDonationManager.BloodDonationService;
 
 @Controller
 @RequestMapping("/module/blooddonationmanager/addOrUpdate.form")
@@ -67,7 +73,7 @@ public class AddOrUpdateDonorController {
 	                            @RequestParam(value="dobEstimated", required=false) Boolean dobEstimated,
 	                            @RequestParam(value="existPat", required=false) String existPat,
 	                            @RequestParam("donId") String donId,
-	                            @RequestParam("patId") String patId,
+								@RequestParam("patId") String patId,
 	                            @RequestParam("donorAddress1") String donorAddress1,
 	                            @RequestParam(value="donorAddress2", required=false) String donorAddress2,
 	                            @RequestParam("cityVillage") String cityVillage,
@@ -83,31 +89,27 @@ public class AddOrUpdateDonorController {
 	                            @RequestParam(value="preregistered", required=false) String preregistered,
 	                            @RequestParam("fatherHusbandName") String fatherHusbandName,
 	                            @RequestParam("gender") String gender,
-	                            @RequestParam(value="donorDob", required=false) String donorDob
+	                            @RequestParam(value = "donorDob", required = false) String donorDob
 	                            ) throws ParseException{
 
-        Patient patient = new Patient();
-        PatientService patientService = Context.getPatientService();
+        Person person = new Person();
+		//Donor donor =new Donor();
+		//int personIdentifier = Integer.parseInt(patId);
+
+
+
+        PersonService personService= Context.getPersonService();
+		DonorService donorService=Context.getService(DonorService.class);
 
 		BloodDonationManagerService bbService = Context.getService(BloodDonationManagerService.class);
-        String locationId = Context.getAdministrationService().getGlobalProperty("BloodDonationManager.location.id");
-        Location location = new Location( Integer.valueOf(locationId) );
+        Location location = Context.getLocationService().getLocationByUuid("8d6c993e-c2cc-11de-8d13-0010c6dffd0f");
 
 		if(existPat != ""){
-			patient = patientService.getPatient(Integer.valueOf(existPat));
-			PatientIdentifierType identType2 = patientService.getPatientIdentifierType( Integer.valueOf(Context.getAdministrationService().getGlobalProperty("BloodDonationManager.donorIdTypeId")));
-	        PatientIdentifier donorIdentifier = new PatientIdentifier(donId, identType2, location );
-	        patient.addIdentifier(donorIdentifier);
+
+            person = personService.getPerson(Integer.valueOf(existPat));
 
 		}else{
-
-			PatientIdentifierType identType = patientService.getPatientIdentifierType( Integer.valueOf(Context.getAdministrationService().getGlobalProperty("BloodDonationManager.patientIdTypeId")));
-	        PatientIdentifierType identType2 = patientService.getPatientIdentifierType( Integer.valueOf(Context.getAdministrationService().getGlobalProperty("BloodDonationManager.donorIdTypeId")));
-	        PatientIdentifier patientIdentifier = new PatientIdentifier(patId, identType, location );
-	        PatientIdentifier donorIdentifier = new PatientIdentifier( donId, identType2, location );
-
 	        if(preregistered == ""){
-//				String donId = donorPrepId;
 
 				PreparedDonorId pdi = bbService.getPrepDonorIdbyIdentifier(donorPrepId);
 				pdi.setUsed(true);
@@ -116,28 +118,27 @@ public class AddOrUpdateDonorController {
 				pdi.setIdentifier(donorPrepId);
 
 				bbService.savePreparedId(pdi);
-				donorIdentifier = new PatientIdentifier(donorPrepId, identType2, location);
+
 			}
 
 
-	        String[] patientName = donorName.split("\\s+");
+	        String[] personName = donorName.split("\\s+");
 	        PersonName name = new PersonName();
-	        if(patientName.length>2){
-	        	name = new PersonName(patientName[0],patientName[1],patientName[2]);
+	        if(personName.length>2){
+	        	name = new PersonName(personName[0],personName[1],personName[2]);
 	        }else{
-	        	name.setGivenName(patientName[0]);
-	        	if(patientName.length>1)
-	        	name.setFamilyName(patientName[1]);
+	        	name.setGivenName(personName[0]);
+	        	if(personName.length>1)
+	        	name.setFamilyName(personName[1]);
 	        	name.setMiddleName("");
 	        }
-
-
-
 
 	        DateFormat df = new SimpleDateFormat( "dd/MM/yy" );
 	        boolean dobE = false;
 	        if(dobEstimated != null)
 	        	dobE = true;
+
+
 
 	        PersonAddress donorAddress = new PersonAddress();
 	        donorAddress.setAddress1(donorAddress1);
@@ -153,28 +154,32 @@ public class AddOrUpdateDonorController {
 	        donorAddress.setTownshipDivision(townshipDivision);
 	        donorAddress.setPreferred(true);
 
-
-	//        SortedSet<PersonAddress> addresses = new TreeSet<PersonAddress>();
-	//        addresses.add(donorAddress);
-
-	        patient.addIdentifier( patientIdentifier );
-	        patient.addIdentifier( donorIdentifier );
-	        patient.addName( name );
-	        PersonAttributeType pat = Context.getPersonService().getPersonAttributeTypeByName( "Father/Husband Name" );
-	        PersonAttribute pa = new PersonAttribute(pat, fatherHusbandName);
-	        patient.addAttribute(pa);
-	        patient.setGender(gender);
-	        patient.setBirthdate( df.parse(donorDob) );
-	        patient.setBirthdateEstimated( dobE );
-	//		patient.setAddresses(addresses);
-			patient.addAddress(donorAddress);
+	        person.addName(name);
+//	        PersonAttributeType pat = Context.getPersonService().getPersonAttributeTypeByName( "Father/Husband Name" );
+//	        PersonAttribute pa = new PersonAttribute(pat, fatherHusbandName);
+//            person.addAttribute(pa);
+            person.setGender(gender);
+            person.setBirthdate(df.parse(donorDob));
+	        person.setBirthdateEstimated(dobE);
+			person.addAddress(donorAddress);
 
 			}
-        patientService.savePatient( patient );
+
+        personService.savePerson(person);
+		Donor donor = new Donor();
+		donor.setPersonId(person.getPersonId());
+
+		//Saves personId in donor table
+		donorService.saveDonor(donor);
+
+
+
+
+
 
         //redirects to donor encounter view for new patient.
 
-		return "redirect:/module/blooddonationmanager/showDonorEncounters.form?patientId=" + patient.getPatientId();
+		return "redirect:/module/blooddonationmanager/showDonorEncounters.form?personId=" + person.getPersonId();
 	}
 
 

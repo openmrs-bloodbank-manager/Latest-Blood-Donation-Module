@@ -30,6 +30,7 @@
 	<mappingFiles>
 				
 		BloodDonationManager.hbm.xml
+		Donor.hbm.xml
 				
 	</mappingFiles>
 
@@ -48,6 +49,11 @@
 		<file>messages_es.properties</file>
 	</messages>
 	<!-- /Internationalization -->
+	<mappingFiles>
+		BloodDonationManager.hbm.xml
+		BlooddonationManagerForm.hbm.xml
+		generatedids.hbm.xml
+	</mappingFiles>
 
 </module>
 
