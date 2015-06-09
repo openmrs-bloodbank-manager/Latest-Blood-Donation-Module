@@ -47,11 +47,18 @@ public class AdminList extends AdministrationSectionExt {
 		map.put("/module/blooddonationmanager/manage.form", "Manage Module");
 		map.put("/module/module/blooddonationmanager/main.form", "main form");
 		map.put("/module/blooddonationmanager/newIds.form", "Generate new Donor IDs");
+<<<<<<< HEAD
 		map.put("/module/blooddonationmanager/addOrUpdate.form", "Add/update donors");
 		map.put("/module/blooddonationmanager/list.form", "BloodDonationManager.edit_list");
 		map.put("/module/blooddonationmanager/queue.form", "Queue...");
 		map.put("/module/blooddonationmanager/viewStock.form", "View Blood Bank Stock");
 		map.put("/module/blooddonationmanager/questionnare.form", "Questionnare");
+=======
+		map.put("/blooddonationmanager/addOrUpdate.form", "Add/update donors");
+		map.put("/module/blooddonationmanager/list.form", "BloodDonationManager.edit_list");
+		map.put("/module/blooddonationmanager/queue.form", "Queue...");
+		map.put("/module/blooddonationmanager/viewStock.form", "View Blood Bank Stock");
+>>>>>>> de9d922969fa2964879722c4ba209f57d8f110c9
 		return map;
 	}
 	

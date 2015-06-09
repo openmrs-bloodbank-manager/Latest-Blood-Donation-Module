@@ -10,6 +10,7 @@
 
         <form class="box" id="addDonorForm" method="post">
             <div class="boxHeader">Search Donor by Name</div>
+<<<<<<< HEAD
 
 
             <div class="panel-body">
@@ -69,6 +70,8 @@
 
 
 
+=======
+>>>>>>> de9d922969fa2964879722c4ba209f57d8f110c9
             <div>
                 <div>
                     <div style="margin-top:12px;"><spring:message code="Donor Name"/></div>

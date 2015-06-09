@@ -14,7 +14,14 @@
 package org.openmrs.module.blooddonationmanager.api.db;
 
 import org.hibernate.SessionFactory;
+<<<<<<< HEAD
 import org.openmrs.*;
+=======
+import org.openmrs.Concept;
+import org.openmrs.Encounter;
+import org.openmrs.Order;
+import org.openmrs.Patient;
+>>>>>>> de9d922969fa2964879722c4ba209f57d8f110c9
 import org.openmrs.module.blooddonationmanager.api.BloodDonationManagerService;
 import org.openmrs.module.blooddonationmanager.api.model.BloodDonationManager;
 import org.openmrs.module.blooddonationmanager.api.model.BlooddonationManagerForm;
@@ -41,7 +48,11 @@ public interface BloodDonationManagerDAO {
 
 	public PreparedDonorId getPrepDonorIdbyIdentifier(String identifier);
 
+<<<<<<< HEAD
 	public List<BloodDonationManager> getRecordsByPerson(Person person);
+=======
+	public List<BloodDonationManager> getRecordsByPatient(Patient patient);
+>>>>>>> de9d922969fa2964879722c4ba209f57d8f110c9
 
 	public BloodDonationManager getRecordById(int id);
 
@@ -94,5 +105,8 @@ public interface BloodDonationManagerDAO {
 
 	public boolean isPatientDonor(Integer patientId);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> de9d922969fa2964879722c4ba209f57d8f110c9
 }
