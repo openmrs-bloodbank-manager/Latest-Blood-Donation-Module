@@ -20,6 +20,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import org.openmrs.Location;
 import org.openmrs.Patient;
@@ -65,6 +66,17 @@ public class AddOrUpdateDonorController {
 		Patient pat = new Patient();
 		model.addAttribute("donor", pat);
 		return "/module/blooddonationmanager/patient/addOrUpdateDonorForm";
+	}
+
+	@RequestMapping(value = "/module/blooddonationmanager/addOrUpdate.form", method = RequestMethod.GET)
+	public void listDonors(ModelMap model) {
+
+
+		PersonService personService=Context.getService(PersonService.class);
+        DonorService donorService=Context.getService(DonorService.class);
+		List<Donor> donorList=donorService.getAllDonors();
+        model.addAttribute("donorList", donorList);
+		model.addAttribute("user", Context.getAuthenticatedUser());
 	}
 
 	@RequestMapping(method=RequestMethod.POST)

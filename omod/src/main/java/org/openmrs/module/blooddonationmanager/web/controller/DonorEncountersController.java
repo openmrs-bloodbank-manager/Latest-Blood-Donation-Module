@@ -33,7 +33,7 @@ public class DonorEncountersController {
        // Location loc = Context.getLocationService().getLocation(Integer.valueOf(Context.getAdministrationService().getGlobalProperty("bloodbank.location.id")));
       //  enc.setLocation(loc);
 		//enc.setPerson(person);
-		enc.setPersonId(person.getPersonId());
+		//enc.setPersonId(person.getPersonId());
 		//EncounterType encounterType =  Context.getEncounterService().getEncounterType(Integer.valueOf(Context.getAdministrationService().getGlobalProperty("bloodbank.question.enctype.id")));
 		Form form = Context.getFormService().getForm(Integer.valueOf(Context.getAdministrationService().getGlobalProperty("bloodbank.question.formId")));
 		enc.setVoided(false);

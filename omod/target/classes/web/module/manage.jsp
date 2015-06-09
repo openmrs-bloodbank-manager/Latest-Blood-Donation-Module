@@ -36,5 +36,11 @@
                 <a href="viewStock.form">View Blood Bank Stock</a>
             </li>
         </openmrs:hasPrivilege>
+
+        <openmrs:hasPrivilege privilege="Edit Encounters">
+            <li <c:if test='<%= request.getRequestURI().contains("questionnare") %>'>class="active"</c:if>>
+                <a href="questionnare.form">Donor Questionnare</a>
+            </li>
+        </openmrs:hasPrivilege>
     </ul>
 </div>

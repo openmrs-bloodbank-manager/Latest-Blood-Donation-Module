@@ -10,6 +10,65 @@
 
         <form class="box" id="addDonorForm" method="post">
             <div class="boxHeader">Search Donor by Name</div>
+
+
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div id="dt_example" class="table-responsive example_alt_pagination clearfix">
+                        <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
+                            <thead>
+                            <tr>
+
+                                <th style="width:10%">Given Name</th>
+                                <th style="width:10%">Family Name</th>
+                                <th style="width:10%">Address</th>
+                                <th style="width:10%">Village</th>
+                                <th style="width:10%">Province</th>
+                                <th style="width:10%">County</th>
+                                <th style="width:10%">District</th>
+
+                                <%--<th style="width:10%">Units dispensed</th>--%>
+                                <%--<th style="width:10%">Last Batch</th>--%>
+                                <th style="width:10%">Edit Donor details</th>
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+<c:forEach var="donor" items="${donorList}" varStatus="status">
+    <tr class="gradeC">
+    <td>
+    ${donor.given_name}
+    </td>
+            ${donor.given_name}
+        </td>
+        <td>${donor.faily_name}</td>
+        <td>${donor.address1}</td>
+        <td>${donor.city_village}</td>
+        <td>${donor.state_province}</td>
+        <td>${donor.county_district}</td>
+        <td>${donor.country}</td>
+    <td>
+    <button type="button" data-toggle="modal" data-target="#editDrug_${donor.id}" class="btn btn-success"><i
+    class="fa fa-edit"></i> Edit Donor Details
+    </button>
+    </td>
+    </tr>
+    </c:forEach>
+</tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <%--</form>--%>
+        <%--</div>
+    </div>--%>
+
+
+
+
+
             <div>
                 <div>
                     <div style="margin-top:12px;"><spring:message code="Donor Name"/></div>

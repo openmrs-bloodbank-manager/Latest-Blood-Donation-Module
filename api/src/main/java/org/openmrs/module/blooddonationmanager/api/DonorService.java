@@ -38,14 +38,17 @@ public interface DonorService extends OpenmrsService {
 	 */
 
 
-		//list all wards
+		//list all donors
 		@Transactional(readOnly = true)
 		List<Donor> getAllDonors();
+
 		//gets a donor
 		@Transactional(readOnly = true)
 		Donor getDonor(Integer donorId);
 		//Saves a donor
 		Donor saveDonor(Donor donor);
+
 		//deletes a donor
 		void purgeDonor(Donor donor);
+       Donor updateDonor(Donor donor);
 }

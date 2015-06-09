@@ -64,4 +64,8 @@ public class DonorServiceImpl extends BaseOpenmrsService implements DonorService
         dao.purgeDonor(donor);
 
     }
+    @Override
+    public Donor updateDonor(Donor donor) {
+        return dao.updateDonor(donor);
+    }
 }

@@ -36,4 +36,5 @@ public interface DonorDAO {
 	void purgeDonor(Donor donor);
 
 
+	Donor updateDonor(Donor donor);
 }

@@ -7,7 +7,7 @@
 <link type="text/css" rel="stylesheet"  href="${pageContext.request.contextPath}/moduleResources/blooddonationmanager/styles/common.css" />
 <openmrs:require privilege="All Blood Bank" otherwise="/login.htm" redirect="/module/blooddonationmanager/main.form" />
 
-<div style="border-bottom: 1px solid black;">
+< style="border-bottom: 1px solid black;">
     <ul id="menu">
         <li class="first">
             <a href="main.form" style="font-size:large; font-weight:bold; text-decoration:none;">Blood Bank System</a>
@@ -35,6 +35,11 @@
             <li <c:if test='<%= request.getRequestURI().contains("viewStock") %>'>class="active"</c:if>>
                 <a href="viewStock.form">View Blood Bank Stock</a>
             </li>
+        <openmrs:hasPrivilege privilege="Edit Encounters">
+            <li <c:if test='<%= request.getRequestURI().contains("questionnare") %>'>class="active"</c:if>>
+                <a href="questionnare.form">Donor Questionnare</a>
+            </li>
         </openmrs:hasPrivilege>
     </ul>
 </div>
+</openmrs:hasPrivilege>

@@ -3,10 +3,13 @@ package org.openmrs.module.blooddonationmanager.web.controller;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.*;
+import org.openmrs.api.PersonService;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.blooddonationmanager.Donor;
 import org.openmrs.module.blooddonationmanager.Questionnaire;
 import org.openmrs.module.blooddonationmanager.api.BloodDonationManagerService;
 import org.openmrs.module.blooddonationmanager.api.QuestionnareService;
+import org.openmrs.module.blooddonationmanager.api.DonorService;
 import org.openmrs.web.WebConstants;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,16 +39,19 @@ public class QuestionnareController {
 
 	@RequestMapping(method=RequestMethod.GET)
 	public String main(ModelMap model){
+        Donor donor=new Donor();
 		Person person = new Person();
+        DonorService donorService=Context.getService(DonorService.class);
+        PersonService personService= Context.getPersonService();
 		model.addAttribute("donor", person);
-		return "/module/blooddonationmanager/questionnareForm";
+		return "/module/blooddonationmanager/questionnare";
 	}
+
 
 	@RequestMapping(method=RequestMethod.POST)
 	public String processSubmit(ModelMap map, HttpSession httpSession,
                                 @RequestParam("healthy") String donorId,
 	                            @RequestParam("healthy") String healthy,
-								@RequestParam("personId") String personId,
 								@RequestParam("malaria") String malaria,
 	                            @RequestParam("pregnant") String pregnant,
 								@RequestParam("allergy") String allergy,

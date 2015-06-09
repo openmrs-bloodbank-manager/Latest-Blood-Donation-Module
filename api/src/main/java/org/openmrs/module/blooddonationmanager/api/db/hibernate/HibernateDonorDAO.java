@@ -87,4 +87,10 @@ public class HibernateDonorDAO implements DonorDAO {
 		sessionFactory.getCurrentSession().delete(donor);
 
 	}
+
+	@Override
+	public Donor updateDonor(Donor donor){
+		sessionFactory.getCurrentSession().update(donor);
+		return donor;
+	}
 }
