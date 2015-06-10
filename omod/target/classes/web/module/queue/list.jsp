@@ -133,15 +133,18 @@
 		});
 	}
 </script>
-
 <div class="boxHeader" style="padding-right: 10%; padding-left: 10%;">
 <div class="container" style="background-color:#FCF8E3;">
 
-			Date:<input id="date" value="${currentDate}" onFocus="showCalendar(this);" style="text-align:right;"/>
-			Patient ID/Name:<input id="phrase"/>
-
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Get patients" onClick="getTests(1);"/>
-			<input type="button" value="Reset" onClick="alert('Reset');"/>
+	<div class="box">
+		Date:
+		<input id="date" value="${currentDate}" onFocus="showCalendar(this);" style="text-align:right;"/>
+		Patient ID/Name:
+		<input id="phrase"/>
+		<input type="button" value="Get Requests" onClick="getRequests(1);"/>
+		<%--get Request function--%>
+		<input type="button" value="Reset" onClick="alert('Reset');"/>
+	</div>
 
 <div id="tests">
 </div>
@@ -166,7 +169,8 @@
 				<td></td>
 				<td>23/11/2013</td>
 				<td>Pending</td>
-				<td><button type="submit" class="btn btn-primary">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<td><button type="submit" class="btn btn-primary">Collected</button>&nbsp;&nbsp;
+					<button type="submit" class="btn btn-primary">Edit</button>&nbsp;&nbsp;
 					<button type="submit" class="btn btn-primary">Delete</button>
 				</td>
 			</tr>
@@ -176,7 +180,8 @@
 				<td></td>
 				<td>23/11/2013</td>
 				<td>Collected</td>
-				<td><button type="submit" class="btn btn-primary">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<td><button type="submit" class="btn btn-primary">Collected</button>&nbsp;&nbsp;
+					<button type="submit" class="btn btn-primary">Edit</button>&nbsp;&nbsp;
 					<button type="submit" class="btn btn-primary">Delete</button>
 				</td>
 			</tr>
@@ -186,7 +191,8 @@
 				<td></td>
 				<td>23/11/2013</td>
 				<td>Collected</td>
-				<td><button type="submit" class="btn btn-primary">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<td><button type="submit" class="btn btn-primary">Collected</button>&nbsp;&nbsp;
+					<button type="submit" class="btn btn-primary">Edit</button>&nbsp;&nbsp;
 					<button type="submit" class="btn btn-primary">Delete</button>
 				</td>
 			</tr>
@@ -196,7 +202,9 @@
 				<td></td>
 				<td>23/11/2013</td>
 				<td>Pending</td>
-				<td><button type="submit" class="btn btn-primary">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<td><button type="submit" class="btn btn-primary">Collected</button>&nbsp;&nbsp;
+
+					<button type="submit" class="btn btn-primary">Edit</button>&nbsp;&nbsp;
 					<button type="submit" class="btn btn-primary">Delete</button>
 				</td>
 			</tr>
@@ -206,5 +214,20 @@
 </div>
 </div>
 
+<div class="boxHeader">
+	<strong>See patient List by choosing lab</strong>
+</div>
+<div class="box">
+	Date:
+	<input id="date" value="${currentDate}" onFocus="showCalendar(this);" style="text-align:right;"/>
+	Patient ID/Name:
+	<input id="phrase"/>
+	<br/>
+	<input type="button" value="Get patients" onClick="getTests(1);"/>
+	<input type="button" value="Reset" onClick="alert('Reset');"/>
+</div>
+
+<div id="tests">
+</div>
 
 <%@ include file="/WEB-INF/template/footer.jsp" %>  

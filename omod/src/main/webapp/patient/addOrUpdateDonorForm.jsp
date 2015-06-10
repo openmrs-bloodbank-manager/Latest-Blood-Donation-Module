@@ -5,6 +5,7 @@
 
 <br/>
 <div id="wrapper">
+<<<<<<< HEAD
 
     <div id="rightCol" style=" margin-right:15%; margin-left:15%; width:800px">
         <div class="box" style="float:right;margin-left:4px;">
@@ -18,6 +19,76 @@
         <form class="box" id="addDonorForm" method="post">
             <div class="boxHeader" style="height:10%; padding:5%;"><h1>Search Donor by Name</h1></div>
             <div style="padding-left: 15%; padding-right: 15%;">
+=======
+    <div id="leftCol" style="float:left; min-width:500px">
+
+
+        <form class="box" id="addDonorForm" method="post">
+            <div class="boxHeader">Search Donor by Name</div>
+<<<<<<< HEAD
+
+
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div id="dt_example" class="table-responsive example_alt_pagination clearfix">
+                        <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
+                            <thead>
+                            <tr>
+
+                                <th style="width:10%">Given Name</th>
+                                <th style="width:10%">Family Name</th>
+                                <th style="width:10%">Address</th>
+                                <th style="width:10%">Village</th>
+                                <th style="width:10%">Province</th>
+                                <th style="width:10%">County</th>
+                                <th style="width:10%">District</th>
+
+                                <%--<th style="width:10%">Units dispensed</th>--%>
+                                <%--<th style="width:10%">Last Batch</th>--%>
+                                <th style="width:10%">Edit Donor details</th>
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+<c:forEach var="donor" items="${donorList}" varStatus="status">
+    <tr class="gradeC">
+    <td>
+    ${donor.given_name}
+    </td>
+            ${donor.given_name}
+        </td>
+        <td>${donor.faily_name}</td>
+        <td>${donor.address1}</td>
+        <td>${donor.city_village}</td>
+        <td>${donor.state_province}</td>
+        <td>${donor.county_district}</td>
+        <td>${donor.country}</td>
+    <td>
+    <button type="button" data-toggle="modal" data-target="#editDrug_${donor.id}" class="btn btn-success"><i
+    class="fa fa-edit"></i> Edit Donor Details
+    </button>
+    </td>
+    </tr>
+    </c:forEach>
+</tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <%--</form>--%>
+        <%--</div>
+    </div>--%>
+
+
+
+
+
+=======
+>>>>>>> de9d922969fa2964879722c4ba209f57d8f110c9
+            <div>
+>>>>>>> a87876b4c2dc350442bec7fc4eb7a34107f1bf36
                 <div>
                     <div style="margin-top:12px;"><spring:message code="Donor Name"/></div>
                     <div style="margin-top:12px;display: inline-table;"><input type="text" id="donorName" name="donorName" value="" onblur="capitalize()" style="min-width:600px;"/></div>
@@ -26,7 +97,11 @@
 
                 <div style="margin-top:12px;"><spring:message code="Donor Father/Husbandname"/></div>
                 <div style="margin-top:12px;display: inline-table;"><input type="text" id="fatherHusbandName" name="fatherHusbandName" value="" onblur="capitalize()" style="width:400px;"/></div><br/>
+<<<<<<< HEAD
                 <div style="margin-top:12px;display: inline-table;"><spring:message code="blooddonationmanager.patientIdentifier"/>&nbsp;&nbsp;&nbsp;</div><div style="margin-top:12px;display: inline-table;"><b>${patientIdentifier }</b></div>
+=======
+                <div style="margin-top:12px;display: inline-table;"><spring:message code="blooddonationmanager.patient.id"/>&nbsp;&nbsp;&nbsp;</div><div style="margin-top:12px;display: inline-table;"><b>${patientIdentifier }</b></div>
+>>>>>>> a87876b4c2dc350442bec7fc4eb7a34107f1bf36
                 <div style="display:none;">
                     <input id="patId" name="patId" type="hidden" value="${patientIdentifier }"></input>
                     <input id="donId" name="donId" type="hidden" value="${donorIdentifier }"></input>
@@ -34,22 +109,38 @@
                     <input id="existId" name="existId" type="hidden" value=""></input>
                 </div>
             </div>
+<<<<<<< HEAD
             <div style="padding-left: 15%; padding-right: 15%;">
                 <div style="margin-top:12px;margin-bottom:2px;display: inline-table;"><spring:message code="blooddonationmanager.donorIdentifier"/>&nbsp;&nbsp;&nbsp;</div><div id="donIdShow" style="margin-top:12px;display: inline-table;"><b>${donorIdentifier }</b></div>
+=======
+            <div>
+                <div style="margin-top:12px;margin-bottom:2px;display: inline-table;"><spring:message code="blooddonationmanager.donor.id"/>&nbsp;&nbsp;&nbsp;</div><div id="donIdShow" style="margin-top:12px;display: inline-table;"><b>${donorIdentifier }</b></div>
+>>>>>>> a87876b4c2dc350442bec7fc4eb7a34107f1bf36
                 <div style="margin-top:12px;display: inline-table;"><input  style="margin-top:12px;display: inline-table;" type="checkbox" name="preregistered" id="preregistered" onchange="openIdField();" value="" ><spring:message code="blooddonationmanager.preregistered.id"/></div>
                 <div style="margin-top:12px; display:none;" id="idField"><input  style="display: inline-table;margin-top:12px;" type="text" id="donorPrepId" name="donorPrepId" value="${donorIdPrefix}" onblur="invalidate();" style="width:300px;"/>&nbsp;&nbsp;&nbsp;
                     <input type="button" id="isValidDonorId" name="isValidDonorId" value="Validate ID"/>
                     <div style="display: inline-table;margin-top:12px;" id="valid" name="valid"></div></div>
             </div>
+<<<<<<< HEAD
             <div style="padding-left: 15%; padding-right: 15%;">
                 <div style="display: inline-table;margin-top:12px;"><spring:message code="blooddonationmanager.gender"/></div>
+=======
+            <div>
+                <div style="display: inline-table;margin-top:12px;"><spring:message code="Donor Gender"/></div>
+>>>>>>> a87876b4c2dc350442bec7fc4eb7a34107f1bf36
                 <div style="display: inline-table;margin-top:12px;"><select name="gender"><option id="M" value="M">Male</option><option id="F" value="F">Female</option></select></div>
 
                 <div style="display: inline-table;margin-top:12px;"><spring:message code="Donor Date of Birth.dob"/></div>
                 <div style="display: inline-table;margin-top:12px;"><input type="text" id="donorDob" name="donorDob" value=""  onblur="magicDate(this);" /></div><div style="display: inline-table;margin-top:12px;" id="dateLongField">&nbsp;</div>
+<<<<<<< HEAD
                 <input  style="margin-top:12px;display: inline-table;" type="checkbox" name="dobEstimated" id="dobEstimated" value="yes" ><spring:message code="blooddonationmanager.dobEstimated"/><div id="dateFieldMsg">dd/mm/yyyy</div>
             </div>
             <div style="padding-left: 15%; padding-right: 15%;">
+=======
+                <input  style="margin-top:12px;display: inline-table;" type="checkbox" name="dobEstimated" id="dobEstimated" value="yes" ><spring:message code="blooddonationmanager.dob.etimated"/><div id="dateFieldMsg">dd/mm/yyyy</div>
+            </div>
+            <div>
+>>>>>>> a87876b4c2dc350442bec7fc4eb7a34107f1bf36
                 <div style="margin-top:12px;"><spring:message code="Donor Address1"/></div>
                 <div><input type="text" id="donorAddress1" name="donorAddress1" value="" onblur="validateForm();" style="width:600px;"/></div>
 
@@ -78,14 +169,27 @@
                     <div><input type="text" id="postalCode" name="postalCode" value="" style="width:600px;"/></div>
                 </div>
             </div>
+<<<<<<< HEAD
             <div style="padding-left: 15%; padding-right: 15%;"> <input  style="margin-top:12px;" id="saveButton" name="saveButton" disabled="true" type="submit" value="<spring:message code="general.save"/>"/> <b id="savemessage" style="display:none; color:#658bff">Already existing!</b> </div>
+=======
+            <div> <input  style="margin-top:12px;" id="saveButton" name="saveButton" disabled="true" type="submit" value="<spring:message code="general.save"/>"/> <b id="savemessage" style="display:none; color:red">Already existing!</b> </div>
+>>>>>>> a87876b4c2dc350442bec7fc4eb7a34107f1bf36
         </form>
 
 
     </div>
 </div>
 <!--Right colstart -->
+<<<<<<< HEAD
 
+=======
+<div id="rightCol" style="float:right; width:700px">
+    <div class="box" style="margin-left:4px;">
+        <span class="boxHeader">Matching patients</span>
+        <div id="display" name="display"></div>
+    </div>
+</div>
+>>>>>>> a87876b4c2dc350442bec7fc4eb7a34107f1bf36
 </div>
 
 

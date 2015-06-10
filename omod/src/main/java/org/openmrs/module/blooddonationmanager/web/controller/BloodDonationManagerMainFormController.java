@@ -29,12 +29,4 @@ public class BloodDonationManagerMainFormController {
 	/** Logger for this class and subclasses */
 	protected final Log log = LogFactory.getLog(getClass());
 
-	
-
-	@RequestMapping(method=RequestMethod.GET)
-	public String main(Model model){
-		return "/module/BloodDonationManager/mainForm";
-	}
-
-	
 }

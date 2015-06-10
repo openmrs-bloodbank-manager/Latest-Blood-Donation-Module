@@ -133,7 +133,6 @@
 		});
 	}
 </script>
-
 <div class="boxHeader" style="padding-right: 10%; padding-left: 10%;">
 <div class="container" style="background-color:#FCF8E3;">
 
@@ -215,5 +214,20 @@
 </div>
 </div>
 
+<div class="boxHeader">
+	<strong>See patient List by choosing lab</strong>
+</div>
+<div class="box">
+	Date:
+	<input id="date" value="${currentDate}" onFocus="showCalendar(this);" style="text-align:right;"/>
+	Patient ID/Name:
+	<input id="phrase"/>
+	<br/>
+	<input type="button" value="Get patients" onClick="getTests(1);"/>
+	<input type="button" value="Reset" onClick="alert('Reset');"/>
+</div>
+
+<div id="tests">
+</div>
 
 <%@ include file="/WEB-INF/template/footer.jsp" %>  

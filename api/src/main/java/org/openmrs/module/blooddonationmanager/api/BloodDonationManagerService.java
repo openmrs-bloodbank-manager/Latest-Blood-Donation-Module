@@ -13,10 +13,7 @@
  */
 package org.openmrs.module.blooddonationmanager.api;
 
-import org.openmrs.Concept;
-import org.openmrs.Encounter;
-import org.openmrs.Order;
-import org.openmrs.Patient;
+import org.openmrs.*;
 import org.openmrs.api.OpenmrsService;
 import org.openmrs.module.blooddonationmanager.api.model.BloodDonationManager;
 import org.openmrs.module.blooddonationmanager.api.model.BlooddonationManagerForm;
@@ -52,7 +49,7 @@ public interface BloodDonationManagerService extends OpenmrsService {
 
 	List<PreparedDonorId> getUnusedPreparedId();
 
-	List<BloodDonationManager> getRecordsByPatient(Patient patient);
+	List<BloodDonationManager> getRecordsByPerson(Person person);
 
 	void saveBloodBank(BloodDonationManager bloodBank);
 

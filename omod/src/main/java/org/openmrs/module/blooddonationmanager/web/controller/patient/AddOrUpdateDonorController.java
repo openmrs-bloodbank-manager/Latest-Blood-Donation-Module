@@ -6,6 +6,11 @@ import org.openmrs.*;
 import org.openmrs.api.PatientService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.blooddonationmanager.api.BloodDonationManagerService;
+import org.openmrs.api.PersonService;
+import org.openmrs.api.context.Context;
+import org.openmrs.module.blooddonationmanager.Donor;
+import org.openmrs.module.blooddonationmanager.api.BloodDonationManagerService;
+import org.openmrs.module.blooddonationmanager.api.DonorService;
 import org.openmrs.module.blooddonationmanager.api.model.PreparedDonorId;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,13 +18,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
+import java.util.*;
+import org.openmrs.Location;
+import org.openmrs.Patient;
+import org.openmrs.PersonAddress;
+import org.openmrs.PersonName;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/module/blooddonationmanager/addOrUpdate.form")
@@ -57,13 +64,23 @@ public class AddOrUpdateDonorController {
 		return "/module/blooddonationmanager/patient/addOrUpdateDonorForm";
 	}
 
+	@RequestMapping(value = "/module/blooddonationmanager/addOrUpdate.form", method = RequestMethod.GET)
+	public void listDonors(ModelMap model) {
+
+
+		PersonService personService=Context.getService(PersonService.class);
+        DonorService donorService=Context.getService(DonorService.class);
+		List<Donor> donorList=donorService.getAllDonors();
+        model.addAttribute("donorList", donorList);
+		model.addAttribute("user", Context.getAuthenticatedUser());
+	}
 	@RequestMapping(method=RequestMethod.POST)
 	public String processSubmit(ModelMap map,
 	                            @RequestParam("donorName") String donorName,
 	                            @RequestParam(value="dobEstimated", required=false) Boolean dobEstimated,
 	                            @RequestParam(value="existPat", required=false) String existPat,
 	                            @RequestParam("donId") String donId,
-	                            @RequestParam("patId") String patId,
+								@RequestParam("patId") String patId,
 	                            @RequestParam("donorAddress1") String donorAddress1,
 	                            @RequestParam(value="donorAddress2", required=false) String donorAddress2,
 	                            @RequestParam("cityVillage") String cityVillage,
@@ -79,8 +96,27 @@ public class AddOrUpdateDonorController {
 	                            @RequestParam(value="preregistered", required=false) String preregistered,
 	                            @RequestParam("fatherHusbandName") String fatherHusbandName,
 	                            @RequestParam("gender") String gender,
-	                            @RequestParam(value="donorDob", required=false) String donorDob
+	                            @RequestParam(value = "donorDob", required = false) String donorDob
 	                            ) throws ParseException{
+
+        Person person = new Person();
+		//Donor donor =new Donor();
+		//int personIdentifier = Integer.parseInt(patId);
+
+
+
+        PersonService personService= Context.getPersonService();
+		DonorService donorService=Context.getService(DonorService.class);
+
+		BloodDonationManagerService bbService = Context.getService(BloodDonationManagerService.class);
+        Location location = Context.getLocationService().getLocationByUuid("8d6c993e-c2cc-11de-8d13-0010c6dffd0f");
+
+		if(existPat != ""){
+
+            person = personService.getPerson(Integer.valueOf(existPat));
+
+		}else{
+	        if(preregistered == ""){
 
         Patient patient = new Patient();
         PatientService patientService = Context.getPatientService();
@@ -104,7 +140,6 @@ public class AddOrUpdateDonorController {
 
 	        if(preregistered == ""){
 //				String donId = donorPrepId;
-
 				PreparedDonorId pdi = bbService.getPrepDonorIdbyIdentifier(donorPrepId);
 				pdi.setUsed(true);
 				pdi.setChangedBy(Context.getAuthenticatedUser());
@@ -112,6 +147,20 @@ public class AddOrUpdateDonorController {
 				pdi.setIdentifier(donorPrepId);
 
 				bbService.savePreparedId(pdi);
+
+			}
+
+
+	        String[] personName = donorName.split("\\s+");
+	        PersonName name = new PersonName();
+	        if(personName.length>2){
+	        	name = new PersonName(personName[0],personName[1],personName[2]);
+	        }else{
+	        	name.setGivenName(personName[0]);
+	        	if(personName.length>1)
+	        	name.setFamilyName(personName[1]);
+	        	name.setMiddleName("");
+	        }
 				donorIdentifier = new PatientIdentifier(donorPrepId, identType2, location);
 			}
 
@@ -126,15 +175,10 @@ public class AddOrUpdateDonorController {
 	        	name.setFamilyName(patientName[1]);
 	        	name.setMiddleName("");
 	        }
-
-
-
-
 	        DateFormat df = new SimpleDateFormat( "dd/MM/yy" );
 	        boolean dobE = false;
 	        if(dobEstimated != null)
 	        	dobE = true;
-
 	        PersonAddress donorAddress = new PersonAddress();
 	        donorAddress.setAddress1(donorAddress1);
 	        donorAddress.setAddress2(donorAddress2);
@@ -148,7 +192,32 @@ public class AddOrUpdateDonorController {
 	        donorAddress.setSubregion(subregion);
 	        donorAddress.setTownshipDivision(townshipDivision);
 	        donorAddress.setPreferred(true);
+	        person.addName(name);
+//	        PersonAttributeType pat = Context.getPersonService().getPersonAttributeTypeByName( "Father/Husband Name" );
+//	        PersonAttribute pa = new PersonAttribute(pat, fatherHusbandName);
+//            person.addAttribute(pa);
+            person.setGender(gender);
+            person.setBirthdate(df.parse(donorDob));
+	        person.setBirthdateEstimated(dobE);
+			person.addAddress(donorAddress);
 
+			}
+
+        personService.savePerson(person);
+		Donor donor = new Donor();
+		donor.setPersonId(person.getPersonId());
+
+		//Saves personId in donor table
+		donorService.saveDonor(donor);
+
+
+
+
+
+
+        //redirects to donor encounter view for new patient.
+
+		return "redirect:/module/blooddonationmanager/showDonorEncounters.form?personId=" + person.getPersonId();
 
 	//        SortedSet<PersonAddress> addresses = new TreeSet<PersonAddress>();
 	//        addresses.add(donorAddress);

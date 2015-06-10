@@ -26,6 +26,7 @@
 
 <body>
 
+<<<<<<< HEAD
 <div class="container">
 <div class="table-responsive" style="width:80%; margin-left:10%; margin-right:10%;">
     <li class="list-group-item list-group-item-warning">
@@ -78,6 +79,43 @@
 
 </div>
 </div>
+=======
+<div class="table-responsive" style="width:80%; margin-left:10%; margin-right:10%;">
+
+
+    <form>
+        <h2 class="sub-header">Blood Results</h2>
+        <div class="form-group" style="width:60%; margin-left: 10%; margin-right: 10%;">
+            <ul>
+                <li class="list-group-item list-group-item-warning">
+                    <label for="donorId">Donor Identification Number</label>
+                    <input type="text" class="form-control" id="donorId" placeholder="Doe">
+                </li>
+
+                <li class="list-group-item list-group-item-warning">
+                <label for="donorName">Donor Name</label>
+                <input type="text" class="form-control" id="donorName" placeholder="Doe">
+                </li>
+                <li class="list-group-item list-group-item-warning">
+                <label for="bloodType">Blood Type</label>
+                <input type="text" class="form-control" id="bloodType" placeholder="">
+                </li>
+                <li class="list-group-item list-group-item-warning">
+                <label for="rhesusFactor">Rhesus Factor</label>
+                <input type="text" class="form-control" id="rhesusFactor" placeholder="jane.doe@example.com">
+                </li>
+                <li class="list-group-item list-group-item-warning">
+                <label for="serumTest">Serum Result</label>
+                <input type="text" class="form-control" id="serumTest" placeholder="">
+                </li>
+            </ul>
+        </div>
+        <button type="submit" class="btn btn-primary">Add or Update</button>
+    </form>
+
+</div>
+
+>>>>>>> a87876b4c2dc350442bec7fc4eb7a34107f1bf36
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

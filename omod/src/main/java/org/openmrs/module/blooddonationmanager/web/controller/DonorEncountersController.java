@@ -1,4 +1,4 @@
-package org.openmrs.module.blooddonationmanager.web.controller;
+package org.openmrs.module.bloodbank.web.controller;
 
 import java.util.Date;
 import java.util.List;
@@ -12,10 +12,8 @@ import org.openmrs.Patient;
 import org.openmrs.PatientIdentifier;
 import org.openmrs.api.PatientService;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.blooddonationmanager.api.BloodDonationManagerService;
-import org.openmrs.module.blooddonationmanager.api.model.BloodDonationManager;
-import org.openmrs.module.blooddonationmanager.api.BloodDonationManagerService;
-import org.openmrs.module.blooddonationmanager.api.model.BloodDonationManager;
+import org.openmrs.module.bloodbank.BloodBankService;
+import org.openmrs.module.bloodbank.model.BloodBank;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,12 +22,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/module/blooddonationmanager/showDonorEncounters.form")
+@RequestMapping("/module/bloodbank/showDonorEncounters.form")
 public class DonorEncountersController {
 	
 	public static void newEncounter(int patientId){
 		PatientService ps = Context.getPatientService();
-		BloodDonationManagerService bbs = Context.getService(BloodDonationManagerService.class);
+		BloodBankService bbs = Context.getService(BloodBankService.class);
 		Patient patient = ps.getPatient(patientId);
 		
 		Encounter enc = new Encounter();
@@ -49,7 +47,7 @@ public class DonorEncountersController {
 		enc.setEncounterDatetime(new Date());
 		Context.getEncounterService().saveEncounter(enc);
 		
-		BloodDonationManager bb = new BloodDonationManager();
+		BloodBank bb = new BloodBank();
 		bb.setQuestionnaire(enc);
 		bb.setDateCreated(new Date());
 		bb.setQuestionnaireProvider(Context.getAuthenticatedUser());
@@ -62,7 +60,7 @@ public class DonorEncountersController {
 		bbs.saveBloodBank(bb);
 	}
 	
-	public BloodDonationManager newTest(BloodDonationManager encounter){
+	public BloodBank newTest(BloodBank encounter){
 		if (encounter.getTest() == null){
 			Encounter test = new Encounter();
 			test.setCreator(Context.getAuthenticatedUser());
@@ -89,14 +87,14 @@ public class DonorEncountersController {
 	}
 	
 	@ModelAttribute("encounters")
-	public List<BloodDonationManager> getEncounters(@RequestParam("patientId") int patientId){
-		BloodDonationManagerService bbs = Context.getService(BloodDonationManagerService.class);
+	public List<BloodBank> getEncounters(@RequestParam("patientId") int patientId){
+		BloodBankService bbs = Context.getService(BloodBankService.class);
 		
-		List<BloodDonationManager> encounters = bbs.getRecordsByPatient(getPatient(patientId));
-		for (BloodDonationManager enc : encounters) {
+		List<BloodBank> encounters = bbs.getRecordsByPatient(getPatient(patientId));
+		for (BloodBank enc : encounters) {
 			if((enc.getQuestionnaire() != null
     				&& enc.getQuestionnaire().getObs() != null ? enc.getQuestionnaire().getObs().size() : 0)>=
-    				Integer.valueOf(Context.getAdministrationService().getGlobalProperty("blooddonationmanager.question.valid.count"))
+    				Integer.valueOf(Context.getAdministrationService().getGlobalProperty("bloodbank.question.valid.count"))
     			){
 				enc.setQuestionnaireComplete(true);
 				bbs.saveBloodBank(newTest(enc));

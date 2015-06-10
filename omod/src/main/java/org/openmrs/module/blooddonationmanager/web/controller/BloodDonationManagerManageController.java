@@ -26,24 +26,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * The main controller.
  */
 @Controller
-//@RequestMapping("/module/blooddonationmanager/home.form")
 public class  BloodDonationManagerManageController {
 
 	protected final Log log = LogFactory.getLog(getClass());
 
-	/*@RequestMapping(value = "/module/blooddonationmanager/home", method = RequestMethod.GET)
-	public String main(Model model){return "home";}*/
-
-	@RequestMapping(value = "/module/blooddonationmanager/home", method = RequestMethod.GET)
-	public void home(ModelMap model) {model.addAttribute("user", Context.getAuthenticatedUser());}
-
-	@RequestMapping(value = "/module/blooddonationmanager/bloodResults", method = RequestMethod.GET)
-	public void bloodResults(ModelMap model) {model.addAttribute("user", Context.getAuthenticatedUser());}
-
-	@RequestMapping(value = "/module/blooddonationmanager/Inventory", method = RequestMethod.GET)
-	public void Inventory(ModelMap model) {model.addAttribute("user", Context.getAuthenticatedUser());}
+	@RequestMapping(value = "/module/blooddonationmanager/manage", method = RequestMethod.GET)
+	public void manage(ModelMap model) {
+		model.addAttribute("user", Context.getAuthenticatedUser());
+	}
 
 	@RequestMapping(value = "/module/blooddonationmanager/main.form", method=RequestMethod.GET)
-	public String main(Model model){return "mainForm";}
+	public String main(Model model){
+		return "mainForm";
+	}
+
 }
 
