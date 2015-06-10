@@ -204,7 +204,7 @@
 				<td>23/11/2013</td>
 				<td>Pending</td>
 				<td><button type="submit" class="btn btn-primary">Collected</button>&nbsp;&nbsp;
-					
+
 					<button type="submit" class="btn btn-primary">Edit</button>&nbsp;&nbsp;
 					<button type="submit" class="btn btn-primary">Delete</button>
 				</td>
