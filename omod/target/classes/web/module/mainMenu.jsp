@@ -38,21 +38,23 @@
         </openmrs:hasPrivilege>
 
         <openmrs:hasPrivilege privilege="Edit Encounters">
+            <li <c:if test='<%= request.getRequestURI().contains("bloodInventory") %>'>class="active"</c:if>>
+                <a href="Inventory.form">Blood Inventory</a>
+            </li>
+        </openmrs:hasPrivilege>
+
+        <openmrs:hasPrivilege privilege="Edit Encounters">
+            <li <c:if test='<%= request.getRequestURI().contains("bloodResults") %>'>class="active"</c:if>>
+                <a href="bloodResults.form">Blood Results</a>
+            </li>
+        </openmrs:hasPrivilege>
+
+        <openmrs:hasPrivilege privilege="Edit Encounters">
             <li <c:if test='<%= request.getRequestURI().contains("addOrUpdate") %>'>class="active"</c:if>>
                 <a href="addOrUpdate.form">Add or Update</a>
             </li>
         </openmrs:hasPrivilege>
 
-        <openmrs:hasPrivilege privilege="Edit Encounters">
-            <li <c:if test='<%= request.getRequestURI().contains("viewEditTests") %>'>class="active"</c:if>>
-                <a href="viewEditTests.form">View Blood Test Lab</a>
-            </li>
-        </openmrs:hasPrivilege>
 
-        <openmrs:hasPrivilege privilege="Edit Encounters">
-            <li <c:if test='<%= request.getRequestURI().contains("viewStock") %>'>class="active"</c:if>>
-                <a href="viewStock.form">View Blood Bank Stock</a>
-            </li>
-        </openmrs:hasPrivilege>
     </ul>
 </div>

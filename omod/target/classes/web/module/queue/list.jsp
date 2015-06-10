@@ -134,20 +134,77 @@
 	}
 </script>
 
-<div class="boxHeader">
-	<strong>See patient List by choosing lab</strong>
-</div>
-<div class="box">
-	Date:
-	<input id="date" value="${currentDate}" onFocus="showCalendar(this);" style="text-align:right;"/>
-	Patient ID/Name:
-	<input id="phrase"/>
-	<br/>
-	<input type="button" value="Get patients" onClick="getTests(1);"/>
-	<input type="button" value="Reset" onClick="alert('Reset');"/>
-</div>
+<div class="boxHeader" style="padding-right: 10%; padding-left: 10%;">
+<div class="container" style="background-color:#FCF8E3;">
+
+			Date:<input id="date" value="${currentDate}" onFocus="showCalendar(this);" style="text-align:right;"/>
+			Patient ID/Name:<input id="phrase"/>
+
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Get patients" onClick="getTests(1);"/>
+			<input type="button" value="Reset" onClick="alert('Reset');"/>
 
 <div id="tests">
 </div>
+
+	<div class="table-responsive">
+		<table class="table">
+			<caption>Responsive Table Layout</caption>
+			<thead>
+			<tr>
+				<th>Patient Id</th>
+				<th>Blood Type</th>
+				<th>Rhesus Factor</th>
+				<th>Request Date</th>
+				<th>Status</th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>23/11/2013</td>
+				<td>Pending</td>
+				<td><button type="submit" class="btn btn-primary">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="submit" class="btn btn-primary">Delete</button>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>23/11/2013</td>
+				<td>Collected</td>
+				<td><button type="submit" class="btn btn-primary">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="submit" class="btn btn-primary">Delete</button>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>23/11/2013</td>
+				<td>Collected</td>
+				<td><button type="submit" class="btn btn-primary">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="submit" class="btn btn-primary">Delete</button>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>23/11/2013</td>
+				<td>Pending</td>
+				<td><button type="submit" class="btn btn-primary">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="submit" class="btn btn-primary">Delete</button>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</div>
+
 
 <%@ include file="/WEB-INF/template/footer.jsp" %>  

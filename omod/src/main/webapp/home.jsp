@@ -43,51 +43,38 @@
 
                         <ul class="list-group" class="input-group" style="display: -moz-groupbox; width:80%; padding-right: 5%; margin-left: 5%;">
 
+                            <li class="list-group-item list-group-item-warning">
+                                Date:<input id="date" value="${currentDate}" onFocus="showCalendar(this);" style="text-align:right;"/>
+                            </li>
                            <li class="list-group-item list-group-item-warning">Are you currently on any medication?
-                            <input style="width:100%; "type="text" class="form-control" id="healthDonor" placeholder="Yes or No"><br><br>
+                            <input style="width:100%; "type="text" class="form-control" id="healthDonor" placeholder="Yes or No">
+                               Are you allergic to any medication? If yes, please explain.<input style="width:100%;type="text" class="form-control" id="onMedicationDonor" placeholder="Yes or No">
+                            Have you suffered from malaria recently?
+                            <input style="width:100%;" type="text" class="form-control" id="malariaDonor" placeholder="Yes or No">
+                            Are you pregnant?
+                            <input style="width:100%;" type="text" class="form-control" id="pregnantDonor" placeholder="Yes or No or I am male">
+                            Have you ever donated blood before?
+                            <input style="width:100%;type="text" class="form-control" id="donatedBlood" placeholder="Yes or No">
+                            Has blood ever been transfused to you?
+                            <input style="width:100%;type="text" class="form-control" id="bloodTransfusion" placeholder="Yes or No">
+                            Has any organ ever been transplanted to you?
+                            <input style="width:100%;type="text" class="form-control" id="organTransplant" placeholder="Yes or No">
+                            Have you been pricked with a needle recently?
+                            <input style="width:100%;type="text" class="form-control" id="needleRisks" placeholder="Yes or No">
+                            Have you ever suffered from syphillis or gonorrhea?
+                            <input style="width:100%;type="text" class="form-control" id="syphillisGonorrhea" placeholder="Yes or No">
+                            Do you have a tattoo?
+                            <input style="width:100%;type="text" class="form-control" id="tatooDonor" placeholder="Yes or No">
+                            Do you have any piercings?
+                            <input style="width:100%;type="text" class="form-control" id="piercingDonor" placeholder="Yes or No">
+
+                               <button type="submit" class="btn btn-primary">Submit Questionnaire</button>
+
                            </li>
-
-                            <li class="list-group-item list-group-item-warning">Are you allergic to any medication? If yes, please explain.
-                                <input style="width:100%;type="text" class="form-control" id="onMedicationDonor" placeholder="Yes or No"><br><br>
-                            </li>
-
-                            <li class="list-group-item list-group-item-warning">Have you suffered from malaria recently?
-                            <input style="width:100%;" type="text" class="form-control" id="malariaDonor" placeholder="Yes or No"><br><br>
-                            </li>
-
-                            <li class="list-group-item list-group-item-warning">Are you pregnant?
-                            <input style="width:100%;" type="text" class="form-control" id="pregnantDonor" placeholder="Yes or No or I am male"><br><br>
-                            </li>
-
-                            <li class="list-group-item list-group-item-warning">Have you ever donated blood before?
-                            <input style="width:100%;type="text" class="form-control" id="donatedBlood" placeholder="Yes or No"><br><br>
-                            </li>
-                            <li class="list-group-item list-group-item-warning">Has blood ever been transfused to you?
-                            <input style="width:100%;type="text" class="form-control" id="bloodTransfusion" placeholder="Yes or No"><br><br>
-                            </li>
-
-                            <li class="list-group-item list-group-item-warning">Has any organ ever been transplanted to you?
-                            <input style="width:100%;type="text" class="form-control" id="organTransplant" placeholder="Yes or No"><br><br>
-                            </li>
-
-                            <li class="list-group-item list-group-item-warning">Have you been pricked with a needle recently?
-                            <input style="width:100%;type="text" class="form-control" id="needleRisks" placeholder="Yes or No"><br><br>
-                            </li>
-
-                            <li class="list-group-item list-group-item-warning">Have you ever suffered from syphillis or gonorrhea?
-                            <input style="width:100%;type="text" class="form-control" id="syphillisGonorrhea" placeholder="Yes or No"><br><br>
-                            </li>
-
-                            <li class="list-group-item list-group-item-warning">Do you have a tattoo?
-                            <input style="width:100%;type="text" class="form-control" id="tatooDonor" placeholder="Yes or No"><br><br>
-                            </li>
-                            <li class="list-group-item list-group-item-warning">Do you have any piercings?
-                            <input style="width:100%;type="text" class="form-control" id="piercingDonor" placeholder="Yes or No"><br><br>
-                            </li>
                         </ul>
                     </div>
                     <br><br>
-                    <button type="submit" class="btn btn-primary">Submit Questionnaire</button>
+
                 </form>
             </div>
         </div>

@@ -40,6 +40,9 @@ public class  BloodDonationManagerManageController {
 	@RequestMapping(value = "/module/blooddonationmanager/bloodResults", method = RequestMethod.GET)
 	public void bloodResults(ModelMap model) {model.addAttribute("user", Context.getAuthenticatedUser());}
 
+	@RequestMapping(value = "/module/blooddonationmanager/Inventory", method = RequestMethod.GET)
+	public void Inventory(ModelMap model) {model.addAttribute("user", Context.getAuthenticatedUser());}
+
 	@RequestMapping(value = "/module/blooddonationmanager/main.form", method=RequestMethod.GET)
 	public String main(Model model){return "mainForm";}
 }
